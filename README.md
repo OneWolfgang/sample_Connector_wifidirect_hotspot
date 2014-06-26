@@ -22,7 +22,7 @@ It doesn't embed router directly, instead invokes an external router's APIs embe
 
 3. Router project also has a WifiDirectGroupManager which encapsulate the functionality to create and remove p2p groups, which we'll also copy here for reuse. 
 
-When calling WifiDirectGroupManager.createNetwork(), android's p2p framework will be invoked to create a p2p group. Router runtime will detect this new network and pass its info such as ssid and passcode to apps.
+	When calling WifiDirectGroupManager.createNetwork(), android's p2p framework will be invoked to create a p2p group. Router runtime will detect this new network and pass its info such as ssid and passcode to apps.
 
 4. This connector has a single activity ConnectorByWifiIdl with a simple GUI:
 
@@ -47,7 +47,7 @@ When calling WifiDirectGroupManager.createNetwork(), android's p2p framework wil
 
 7. During startup inside activity's onCreate(), we'll check if this device support WifiDirect or not. If not, a warning dialog is shown and app exits. 
 
-Also when a WifiDirect network is detected and activated, its info (ssid and passcode) will be shown in the textview for network info. To connect another device to this wifi direct group/hotspot, using sample connectors such as Connector_wifi_aidl, we need to manually choose ssid and enter passcode in system settings. A more advanced connector can transfer these info to peer devices using NFC or camera scanning QR code.
+	Also when a WifiDirect network is detected and activated, its info (ssid and passcode) will be shown in the textview for network info. To connect another device to this wifi direct group/hotspot, using sample connectors such as Connector_wifi_aidl, we need to manually choose ssid and enter passcode in system settings. A more advanced connector can transfer these info to peer devices using NFC or camera scanning QR code.
 
 8. Typical interaction with ConnectionService involves a oneway call to API and router call back at connHandler to reply. During typical workflow for network detection, we give higher priority to WifiDirect network, always activate it when it is available, as in the following steps:
 

@@ -22,7 +22,7 @@ It doesn't embed router directly, instead invokes an external router's APIs embe
 
 3. Router project also has a WifiDirectGroupManager which encapsulate the functionality to create and remove p2p groups, which we'll also copy here for reuse. 
 
-When calling WifiDirectGroupManager.createNetwork(), android's p2p framework will be invoked to create a p2p group. Router runtime will detect this new network and pass its info such as ssid and passcode to apps.
+	When calling WifiDirectGroupManager.createNetwork(), android's p2p framework will be invoked to create a p2p group. Router runtime will detect this new network and pass its info such as ssid and passcode to apps.
 
 4. This connector has a single activity ConnectorByWifiIdl with a simple GUI:
 

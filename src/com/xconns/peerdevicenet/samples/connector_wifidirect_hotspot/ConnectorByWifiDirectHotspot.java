@@ -12,7 +12,7 @@ import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +29,7 @@ import com.xconns.peerdevicenet.Router;
 import com.xconns.peerdevicenet.RouterConnectionClient;
 import com.xconns.peerdevicenet.core.WifiDirectGroupManager;
 
-public class ConnectorByWifiDirectHotspot extends ActionBarActivity {
+public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 	boolean wifiDirectSupported = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

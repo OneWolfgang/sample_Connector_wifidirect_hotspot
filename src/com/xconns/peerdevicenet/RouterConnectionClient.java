@@ -28,9 +28,6 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.xconns.peerdevicenet.IRouterConnectionHandler;
-import com.xconns.peerdevicenet.IRouterConnectionService;
-
 public class RouterConnectionClient {
 	// Debugging
 	private static final String TAG = "RouterConnectionClient";

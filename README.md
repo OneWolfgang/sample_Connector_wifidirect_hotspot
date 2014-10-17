@@ -11,14 +11,10 @@ It doesn't embed router directly, instead invokes an external router's APIs embe
 
    Also add permissions to access network facilities.
 
-2. Since router's AIDL interface will be used and we donot include Router as a library project, the following idl files and interface classes are copied from Router project to here (package com.xconns.peerdevicenet):
-
-		* DeviceInfo.java/DeviceInfo.aidl: info about devices
-		* NetInfo.java/NetInfo.aidl: info about networks
-		* Router.java: PeerDeviceNet specific intent actions, message types, extra data keys.
-		* IRouterConnectionService.aidl: async calls to detect networks, search for peers and connect to peers.
-		* IRouterConnectionHandler.aidl: callback interface for ConnectionService api calls.
-		* RouterConnectionClient.java: a wrapper class for accessing ConnectionService API.
+2. To access router's api, add peerdevicenet-api.jar in one of two ways:
+             
+        * download peerdevicenet-api.jar from MavenCentral(http://search.maven.org/#search|ga|1|peerdevicenet) and copy to project's "libs/" directory.
+        * if you are using android's new gradle build system, you can import it as 'com.xconns.peerdevicenet:peerdevicenet-api:1.1.4'.
 
 3. Router project also has a WifiDirectGroupManager which encapsulate the functionality to create and remove p2p groups, which we'll also copy here for reuse. 
 

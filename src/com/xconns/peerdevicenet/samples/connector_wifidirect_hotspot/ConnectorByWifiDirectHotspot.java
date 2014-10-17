@@ -1,5 +1,7 @@
 package com.xconns.peerdevicenet.samples.connector_wifidirect_hotspot;
 
+import java.util.HashSet;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -93,6 +95,7 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 		private CharSequence passText = null;
 		private CharSequence missNetText = null;
 		
+		private HashSet<String> connPeers = new HashSet<String>();
 		private ArrayAdapter<String> mPeerListAdapter;
 		private ListView mPeerListView;
 
@@ -413,10 +416,13 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 					// after find devices
 					// auto connect to them
 					// connect from device with small ip to device with large ip
-					if (mDevice.addr.compareTo(device.addr) < 0) {
-						Log.d(TAG, "connect to client: " + device.addr);
-						connClient.connect(device, securityToken.getBytes(),
-								connTimeout);
+					if (!connPeers.contains(device.addr)) {
+						if (mDevice.addr.compareTo(device.addr) < 0) {
+							Log.d(TAG, "connect to client: " + device.addr);
+							connClient.connect(device,
+									securityToken.getBytes(), connTimeout);
+							connPeers.add(device.addr);
+						}
 					}
 
 					break;
@@ -438,6 +444,7 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 				case Router.MsgId.DISCONNECTED:
 					device = (DeviceInfo) msg.obj;
 					delDeviceFromList(device);
+					connPeers.remove(device.addr);
 					Log.d(TAG, "a device disconnected: " + device.addr);
 					break;
 				case Router.MsgId.GET_CONNECTED_PEERS:
@@ -474,6 +481,7 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 					params = (Object[]) msg.obj;
 					device = (DeviceInfo) params[0];
 					int rejectCode = ((Integer) params[1]);
+					connPeers.remove(device.addr);
 					Log.d(TAG, "connection_failed: " + device.toString() + ", reject code: "+rejectCode);
 					break;
 				case Router.MsgId.GET_DEVICE_INFO:
@@ -528,6 +536,8 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 					mCurrWifiDirectNet = net;
 					// update GUI showing net info
 					updateGuiOnNet(net);
+					//
+					connPeers.clear();
 					// get my device info at active network
 					connClient.getDeviceInfo();
 					break;

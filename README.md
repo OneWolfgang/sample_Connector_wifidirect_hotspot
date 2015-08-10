@@ -3,7 +3,7 @@ Connector_wifidirect_hotspot
 
 This sample connector using Router's ConnectionService aidl api to discover and connect to peer devices. It uses android WifiP2pManager to create a p2p group with the current device as the group owner. This essentially creates a hotspot that can accept connections from legacy wifi devices as well as other p2p devices.
 
-It doesn't embed router directly, instead invokes an external router's APIs embedded in another app such as Connector_wifi_intent. 
+It doesn't embed router directly, instead invokes an external router's APIs embedded in another app such as ConnectionSettings app. 
 
 1. In AndroidManifest.xml, add the following permission to enable access router APIs:
 

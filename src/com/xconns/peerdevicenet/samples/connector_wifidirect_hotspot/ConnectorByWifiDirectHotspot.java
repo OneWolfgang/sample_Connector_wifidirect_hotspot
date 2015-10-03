@@ -394,6 +394,18 @@ public class ConnectorByWifiDirectHotspot extends FragmentActivity {
 				// do nothing
 			}
 
+			@Override
+			public void onNetworkConnecting(NetInfo net) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onNetworkConnectionFailed(NetInfo net) {
+				// TODO Auto-generated method stub
+				
+			}
+
 		};
 
 		/**

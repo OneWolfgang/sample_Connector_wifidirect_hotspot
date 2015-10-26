@@ -1,8 +1,6 @@
 Connector_wifidirect_hotspot
 ============================
 
-        --- move to http://github.com/xconns-com ---
-
 This sample connector using Router's ConnectionService aidl api to discover and connect to peer devices. It uses android WifiP2pManager to create a p2p group with the current device as the group owner. This essentially creates a hotspot that can accept connections from legacy wifi devices as well as other p2p devices.
 
 It doesn't embed router directly, instead invokes an external router's APIs embedded in another app such as ConnectionSettings app. 
@@ -16,7 +14,7 @@ It doesn't embed router directly, instead invokes an external router's APIs embe
 2. To access router's api, add peerdevicenet-api.jar in one of two ways:
              
         * download peerdevicenet-api.jar from MavenCentral(http://search.maven.org/#search|ga|1|peerdevicenet) and copy to project's "libs/" directory.
-        * if you are using android's new gradle build system, you can import it as 'com.xconns.peerdevicenet:peerdevicenet-api:1.1.7'.
+        * if you are using android's new gradle build system, you can import it as 'com.xconns.peerdevicenet:peerdevicenet-api:1.1.8'.
 
 3. Router project also has a WifiDirectGroupManager which encapsulate the functionality to create and remove p2p groups, which we'll also copy here for reuse. 
 
